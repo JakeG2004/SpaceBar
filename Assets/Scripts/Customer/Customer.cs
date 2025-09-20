@@ -1,18 +1,33 @@
 using UnityEngine;
+using UnityEngine.Events;
+using System.Collections;
 
 public class Customer : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    private float timeToLeave;
-    private float timer = 0;
+    [SerializeField] private VoidEventChannelSO returnCup;
+    [SerializeField] private GameObjectEventChannelSO leave;
+    [SerializeField] private float speed = 1;
+    [SerializeField] private float avgLeaveTime = 15;
+    [SerializeField] private float avgReturnCupTime = 10;
+    [SerializeField] private float deviation = 5;
     
+    private float leaveTime;
+    private float returnCupTime;
+    
+    public Transform cupReturn;
     public Vector3 targetPosition;
+    public bool hasBeenServed = false;
     
     void Awake()
     {
         targetPosition = Vector3.zero;
         
-        timeToLeave = Random.Range(10f, 20f);
+        leaveTime = Random.Range(avgLeaveTime - deviation,
+                                   avgLeaveTime + deviation);
+        returnCupTime = Random.Range(avgReturnCupTime - deviation,
+                                     avgReturnCupTime + deviation);
+                                     
+        StartCoroutine(TimedLeave());
     }
 
     void Update()
@@ -30,18 +45,44 @@ public class Customer : MonoBehaviour
         {
             transform.localPosition += movement;
         }
-                                            
-        timer += Time.deltaTime;
-        if (timer >= timeToLeave)
-        {
-            Leave();
-        }
     }
 
     public void Leave()
     {
         targetPosition = targetPosition + Vector3.down * 10;
-        transform.parent.GetComponent<QueueManager>().CustomerLeave(gameObject);
-        Debug.Log("Leaving");
+        leave.RaiseEvent(gameObject);
+        
+        if (hasBeenServed)
+        {
+            StartCoroutine(ReturnCup());
+        }
+    }
+    
+    private IEnumerator TimedLeave()
+    {
+        yield return new WaitForSeconds(leaveTime);
+        
+        if (!hasBeenServed)
+        {
+            Leave();
+        }
+    }
+    
+    private IEnumerator ReturnCup()
+    {
+        yield return new WaitForSeconds(returnCupTime);
+        
+        Vector3 oldPosition = transform.localPosition;
+        
+        targetPosition = transform.parent.InverseTransformPoint(DishDropoff.position);
+
+        while ((transform.localPosition - targetPosition).sqrMagnitude > 0.01f)
+        {
+            yield return null;
+        }
+        
+        returnCup.RaiseEvent();
+        
+        targetPosition = oldPosition;
     }
 }

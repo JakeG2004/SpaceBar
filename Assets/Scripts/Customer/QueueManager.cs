@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class QueueManager : MonoBehaviour
 {
+    [SerializeField] private Transform cupReturn;
     [SerializeField] private GameObject customer;
     [SerializeField] private float spawnX;
     [SerializeField] private float spawnY;
@@ -12,10 +13,17 @@ public class QueueManager : MonoBehaviour
     void Awake()
     {
         customers = new List<GameObject>();
-        
-        for (int i = 0; i < 10; i++)
+    }
+    
+    void Update()
+    {
+        if (Input.GetKeyDown("c"))
         {
             AddCustomer();
+        }
+        else if (Input.GetKeyDown("s"))
+        {
+            CustomerServed();
         }
     }
     
@@ -28,11 +36,14 @@ public class QueueManager : MonoBehaviour
         Customer newCustomerScript = newCustomer.GetComponent<Customer>();
         newCustomerScript.targetPosition = Vector3.right * customerSpacing
                                            * customers.Count;
+        newCustomerScript.cupReturn = cupReturn;
     }
     
     public void CustomerServed()
     {
-        customers[0].GetComponent<Customer>().Leave();
+        Customer customer = customers[0].GetComponent<Customer>();
+        customer.hasBeenServed = true;
+        customer.Leave();
     }
     
     public void CustomerLeave(GameObject customer)

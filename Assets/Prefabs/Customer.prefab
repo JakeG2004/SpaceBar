@@ -105,8 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e4d549ec6c535ea93c4a6c0e7a679e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
+  returnCup: {fileID: 11400000, guid: c4b697289ed9d3babb1949d46de709a7, type: 2}
+  leave: {fileID: 11400000, guid: 4de299c0962c67a6ebaef43c2c2ef309, type: 2}
   speed: 2
+  avgLeaveTime: 15
+  avgReturnCupTime: 10
+  deviation: 5
+  cupReturn: {fileID: 7845591647544972634}
   targetPosition: {x: 0, y: 0, z: 0}
+  hasBeenServed: 0
 --- !u!61 &7444786364339685147
 BoxCollider2D:
   m_ObjectHideFlags: 0
