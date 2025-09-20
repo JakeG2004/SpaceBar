@@ -23,13 +23,15 @@ public class InteractController : MonoBehaviour
         }
 
         _curInteractable = interactable;
+        _curInteractable.SetHighlight(true);
     }
 
     // Remove interactable if its the current one
     void OnTriggerExit2D(Collider2D other)
     {
-        if(_curInteractable == other.gameObject.GetComponent<Interactable>())
+        if(_curInteractable != null && _curInteractable == other.gameObject.GetComponent<Interactable>())
         {
+            _curInteractable.SetHighlight(false);
             _curInteractable = null;
         }
     }
