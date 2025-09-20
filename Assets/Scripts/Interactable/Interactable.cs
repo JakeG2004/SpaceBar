@@ -7,8 +7,9 @@ public class Interactable : MonoBehaviour
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private Color _highlightColor = Color.cyan;
 
-    [Space(10)]
-    [SerializeField] private UnityEvent _onInteract;
+    [Header("Interaction Variables")]
+    [SerializeField] private GameObject _interactionGame;
+
     private Color _originalColor;
 
     void Start()
@@ -23,7 +24,8 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        _onInteract?.Invoke();
+        _interactionGame.SetActive(true);
+        InputManager.Instance.SetMinigameMode();
     }
 
     // Sets the highlight color
