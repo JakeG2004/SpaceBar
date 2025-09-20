@@ -1,0 +1,103 @@
+{
+    "version": 1,
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "5e4a6e17-c61c-4f66-b24d-8101ab66b82f",
+            "actions": [
+                {
+                    "name": "Hold",
+                    "type": "Button",
+                    "id": "1e1b3845-1c75-4f6a-a376-54e12b4b98b0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "47364f06-e608-4a2c-ad6a-6a0da84116b3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap(duration=0.1)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "784f0d4c-124f-4cde-93b4-d0a58739d8e9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07f37e0c-f1cc-4641-8643-4dbf37adf79b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Minigames",
+            "id": "d56b50a9-a0a6-4941-834e-fb16a775c921",
+            "actions": [
+                {
+                    "name": "Hold",
+                    "type": "Button",
+                    "id": "1c2b993e-8932-4a05-8943-4977291e9d7c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "d21b42f9-c222-428e-aa7c-3a03c24a5f14",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "46df3c87-b37e-4d21-a4fe-8923ddcee9c3",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e969219-c677-459e-b424-fac4a402fe69",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
