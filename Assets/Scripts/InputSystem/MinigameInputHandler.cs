@@ -9,14 +9,10 @@ public class MinigameInputHandler
     public Action OnHold;
     public Action OnCancelHold;
     public Action OnTap;
-    public Action OnDoubleTap;
 
     public bool _isHolding = false;
 
     private PlayerInputActions _pia;
-    private Coroutine _tapCoroutine = null;
-    private int _taps = 0;
-    private bool _tapReleased = false;
 
     public MinigameInputHandler(PlayerInputActions pia)
     {
@@ -45,17 +41,7 @@ public class MinigameInputHandler
 
     private void HandleTap(InputAction.CallbackContext ctx)
     {
-        _taps++;
-
-        if(_tapCoroutine == null)
-        {
-            _tapCoroutine = CoroutineRunner.Instance.StartCoroutine(TapCoroutine());
-        }
-    }
-
-    private void CancelTap(InputAction.CallbackContext ctx)
-    {
-        _tapReleased = true;
+        OnTap?.Invoke();
     }
 
     private void BindInputActions()
@@ -63,34 +49,5 @@ public class MinigameInputHandler
         _pia.Minigames.Hold.performed += HandleHold;
         _pia.Minigames.Hold.canceled += CancelHold;
         _pia.Minigames.Tap.performed += HandleTap;
-        _pia.Minigames.Tap.canceled += CancelTap;
-    }
-
-    private IEnumerator TapCoroutine()
-    {
-        yield return new WaitForSeconds(0.05f);
-
-        if (_taps == 1 && _tapReleased)
-        {
-            OnTap?.Invoke();
-        }
-        else if (_taps == 1 && !_tapReleased)
-        {
-            yield return new WaitForSeconds(.1f);
-
-            if (_taps == 1)
-            {
-                OnTap?.Invoke();
-            }
-        }
-        
-        if (_taps > 1)
-        {
-            OnDoubleTap?.Invoke();
-        }
-
-        _taps = 0;
-        _tapReleased = false; 
-        _tapCoroutine = null;
     }
 }
