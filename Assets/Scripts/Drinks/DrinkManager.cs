@@ -22,14 +22,11 @@ public class DrinkManager : MonoBehaviour
 
     void Start()
     {
-        drinks = Drink.GenerateRandomDrinks(10);
-        foreach(Drink drink in drinks)
-        {
-            string debugString = drink.drinkName + "\n" + 
-                                drink.drink1 + "\n" + 
-                                drink.drink2 + "\n" + 
-                                drink.topping; 
-            Debug.Log(debugString);
-        }
+        drinks = Drink.GenerateRandomDrinks(24);
+    }
+
+    public Drink GetRandomDrink()
+    {
+        return drinks[Random.Range(0, drinks.Count)];
     }
 }

@@ -1,24 +1,50 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
+using System.Collections.Generic;
 
 public class TorchMinigame : MonoBehaviour
 {
     [SerializeField] private UnityEvent _onComplete;
 
+    [Header("Tap variables")]
     [SerializeField] private int _requiredTaps = 15;
     [SerializeField] private int _curTaps = 0;
 
+    [Header("Selection variables")]
+    [SerializeField] private GameObject _curSelection;
+    [SerializeField] private GameObject[] _selectables;
+    [SerializeField] private Transform _finalPos;
+    [SerializeField] private Transform _initialPos;
+    
+    [SerializeField] private GameObject _toppingText;
+    private int _curSelectionIdx;
+
     void OnEnable()
     {
-        _requiredTaps = 15 + Random.Range(-3, 3);
+        _toppingText.SetActive(false);
+        _curSelectionIdx = 0;
+        _curSelection = _selectables[0];
+
+        SetSelection();
+        _requiredTaps = 30;
         _curTaps = 0;
+
+        StartCoroutine(TapDecreaser());
+        SetToppingPos();
+    }
+
+    void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     public void OnTap()
     {
         _curTaps++;
+        SetToppingPos();
 
-        if(_curTaps >= _requiredTaps)
+        if(_curTaps > _requiredTaps)
         {
             FinishMinigame();
         }
@@ -26,6 +52,71 @@ public class TorchMinigame : MonoBehaviour
 
     private void FinishMinigame()
     {
+        StartCoroutine(MinigameEnd());
+    }
+
+    public void OnHold()
+    {
+        StartCoroutine(SelectorChanger());
+        _curTaps = 0;
+    }
+
+    public void OnHoldRelease()
+    {
+        StopAllCoroutines();
+    }
+
+    private void SetSelection()
+    {
+        foreach(GameObject selectable in _selectables)
+        {
+            if(selectable == _curSelection)
+            {
+                selectable.SetActive(true);
+                continue;
+            }
+
+            selectable.SetActive(false);
+        }
+    }
+
+    private void SetToppingPos()
+    {
+        _curSelection.transform.position = Vector2.Lerp(new Vector2(_initialPos.position.x, _initialPos.position.y), new Vector2(_finalPos.position.x, _finalPos.position.y), (float)_curTaps / _requiredTaps);
+    }
+
+    private IEnumerator SelectorChanger()
+    {
+        while(true)
+        {
+            _curSelectionIdx = (_curSelectionIdx + 1) % _selectables.Length;
+            _curSelection = _selectables[_curSelectionIdx];
+
+            SetSelection();
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private IEnumerator TapDecreaser()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(0.35f);
+            _curTaps--;
+            if(_curTaps < 0)
+            {
+                _curTaps = 0;
+            }
+
+            SetToppingPos();
+        }
+    }
+
+    private IEnumerator MinigameEnd()
+    {
+        _toppingText.SetActive(true);
+        yield return new WaitForSeconds(2f);
         _onComplete?.Invoke();
     }
 }

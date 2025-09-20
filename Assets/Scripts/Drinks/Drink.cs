@@ -10,6 +10,7 @@ public class Drink
 
     public string drinkName;
 
+    // Generates a list of num unique drinks. Max with current options is 24
     static public List<Drink> GenerateRandomDrinks(int numDrinks)
     {
         List<Drink> drinks = new();
