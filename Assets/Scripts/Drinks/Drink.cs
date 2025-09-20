@@ -10,6 +10,15 @@ public class Drink
 
     public string drinkName;
 
+    public Drink()
+    {
+        drink1 = DrinkColor.RED;
+        drink2 = DrinkColor.RED;
+
+        topping = DrinkTopping.PEPPER;
+        drinkName = "Test Drink";
+    }
+
     // Generates a list of num unique drinks. Max with current options is 24
     static public List<Drink> GenerateRandomDrinks(int numDrinks)
     {
@@ -42,7 +51,7 @@ public class Drink
                 }
 
                 // Determine the topping
-                newDrink.topping = (DrinkTopping)Random.Range(0, 4);
+                newDrink.topping = (DrinkTopping)Random.Range(0, 5);
 
                 // Check for drinks with the same composition and reject
                 foreach (Drink drink in drinks)
@@ -84,13 +93,15 @@ public enum DrinkColor
 {
     RED,
     GREEN,
-    BLUE
+    BLUE,
+    NONE
 };
 
 public enum DrinkTopping
 {
-    FIRE,
+    PEPPER,
     OLIVE,
     LEMON,
-    UMBRELLA
+    UMBRELLA,
+    NONE
 };

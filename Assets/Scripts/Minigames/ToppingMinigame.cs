@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TorchMinigame : MonoBehaviour
+public class ToppingMinigame : MonoBehaviour
 {
     [SerializeField] private UnityEvent _onComplete;
 
@@ -19,6 +19,7 @@ public class TorchMinigame : MonoBehaviour
     
     [SerializeField] private GameObject _toppingText;
     private int _curSelectionIdx;
+    private Coroutine _decreaseTapsCoroutine;
 
     void OnEnable()
     {
@@ -30,7 +31,7 @@ public class TorchMinigame : MonoBehaviour
         _requiredTaps = 30;
         _curTaps = 0;
 
-        StartCoroutine(TapDecreaser());
+        _decreaseTapsCoroutine = StartCoroutine(TapDecreaser());
         SetToppingPos();
     }
 
@@ -52,6 +53,7 @@ public class TorchMinigame : MonoBehaviour
 
     private void FinishMinigame()
     {
+        StopCoroutine(_decreaseTapsCoroutine);
         StartCoroutine(MinigameEnd());
     }
 
@@ -115,6 +117,32 @@ public class TorchMinigame : MonoBehaviour
 
     private IEnumerator MinigameEnd()
     {
+        DrinkTopping topping = DrinkTopping.PEPPER;
+
+        switch(_curSelection.name)
+        {
+            case "Lemon":
+                topping = DrinkTopping.LEMON;
+                break;
+
+            case "Olive":
+                topping = DrinkTopping.OLIVE;
+                break;
+
+            case "Umbrella":
+                topping = DrinkTopping.UMBRELLA;
+                break;
+            
+            case "Pepper":
+                topping = DrinkTopping.PEPPER;
+                break;
+
+            default:
+                break;
+        }
+
+        DrinkManager.Instance.SetTopping(topping);
+        
         _toppingText.SetActive(true);
         yield return new WaitForSeconds(2f);
         _onComplete?.Invoke();
