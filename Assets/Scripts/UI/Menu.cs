@@ -7,10 +7,19 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private GameObject _menu;
     [SerializeField] private List<Selectable> _buttons;
+    [SerializeField] private bool _startActivated = false;
     private int _curSelectionIdx = 0;
     private Selectable _curSelection;
 
     private bool _isActive = false;
+
+    void Start()
+    {
+        if(_startActivated)
+        {
+            TogglePause();
+        }
+    }
 
     public void TogglePause()
     {

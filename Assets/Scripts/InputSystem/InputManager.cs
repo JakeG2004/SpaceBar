@@ -10,6 +10,9 @@ using System;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
+
+    [SerializeField] private bool _startInMovementMode = true;
+
     private PlayerInputActions _pia;
 
     // The action maps which other scripts will reference
@@ -35,7 +38,15 @@ public class InputManager : MonoBehaviour
         }
 
         GetComponentReferences();
-        SetMovementMode();
+
+        if(_startInMovementMode)
+        {
+            SetMovementMode();
+        }
+        else
+        {
+            SetMinigameMode();
+        }
     }
 
     public void SetMinigameMode()
