@@ -9,6 +9,9 @@ public class DrinkManager : MonoBehaviour
     private Drink _currentDrink = new();
     private Drink _targetDrink = new();
 
+    public int cleanCups = 10;
+    public int dirtyCups = 0;
+
     void Awake()
     {
         if(Instance != this && Instance != null)
@@ -74,5 +77,15 @@ public class DrinkManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void ServeCustomer()
+    {
+        cleanCups--;
+    }
+
+    public void WashedCups(int numCups)
+    {
+        cleanCups += numCups;
     }
 }
