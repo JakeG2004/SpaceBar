@@ -96,7 +96,7 @@ public class DirtyCup : MonoBehaviour
             GameObject bubble = Object.Instantiate(
                 _bubble,
                 tmpSpawn,
-                Quaternion.Euler(0, 0, Random.Range(0f, 360f)),
+                Quaternion.identity,
                 transform // keep parent
             );
 

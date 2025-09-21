@@ -84,8 +84,9 @@ public class DrinkManager : MonoBehaviour
         cleanCups--;
     }
 
-    public void WashedCups(int numCups)
+    public void WashedCups()
     {
-        cleanCups += numCups;
+        dirtyCups--;
+        cleanCups++;
     }
 }
