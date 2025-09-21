@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class PouringMinigame : MonoBehaviour
 {
     [SerializeField] private VoidEventChannelSO minigameComplete;
+    [SerializeField] private ParticleSystem winParticles;
     [SerializeField] private Bottle[] bottles;
     [SerializeField] private Cup cup;
     private int currentBottleIndex = 0;
@@ -40,7 +42,17 @@ public class PouringMinigame : MonoBehaviour
     
     public void CupIsFull()
     {
-        // Insert feedback so user knows if it's good or not.    
+        StartCoroutine(PlayParticles());
+    }
+    
+    private IEnumerator PlayParticles()
+    {
+        winParticles.Play();
+        
+        while (winParticles.isPlaying)
+        {
+            yield return null;
+        }
         
         minigameComplete.RaiseEvent();
     }

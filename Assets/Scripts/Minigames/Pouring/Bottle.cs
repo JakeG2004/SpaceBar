@@ -74,7 +74,11 @@ public class Bottle : MonoBehaviour
         {
             StopCoroutine(stopPour);
         }
-        startPour = StartCoroutine(Pour());
+        
+        if (gameObject.active)
+        {
+            startPour = StartCoroutine(Pour());
+        }
     }
     
     public void StopPour()
@@ -83,7 +87,11 @@ public class Bottle : MonoBehaviour
         {
             StopCoroutine(startPour);
         }
-        stopPour = StartCoroutine(ReturnToUpright());
+        
+        if (gameObject.active)
+        {
+            stopPour = StartCoroutine(ReturnToUpright());
+        }
     }
 
     private void SpawnDrop()

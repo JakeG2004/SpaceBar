@@ -7,6 +7,9 @@ public class MinigameController : MonoBehaviour
     [SerializeField] private UnityEvent _onHold;
     [SerializeField] private UnityEvent _onHoldRelease;
     [SerializeField] private UnityEvent _onTap;
+    
+    [Header("Other")]
+    [SerializeField] private GameObject _sceneObjects;
 
     private MinigameInputHandler _inputHandler;
 
@@ -14,11 +17,17 @@ public class MinigameController : MonoBehaviour
     {
         BindInputActions();
     }
+    
+    void OnEnable()
+    {
+        _sceneObjects.SetActive(false);
+    }
 
     public void SetMinigameComplete()
     {
         InputManager.Instance.SetMovementMode();
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        _sceneObjects.SetActive(true);
     }
 
     // Binds input events to the input handler
