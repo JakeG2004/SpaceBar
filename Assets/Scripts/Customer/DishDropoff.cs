@@ -6,6 +6,6 @@ public class DishDropoff : MonoBehaviour
     
     void Awake()
     {
-        position = transform.position;
+        position = transform.position + Vector3.right * 1.2f;
     }
 }
