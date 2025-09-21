@@ -9,11 +9,8 @@ public class Bottle : MonoBehaviour
     [SerializeField] GameObject drop;
     [SerializeField] float dropAngleVariance;
     [SerializeField] float pressure;
-    [SerializeField] private ParticleSystem particles;
-    [SerializeField] private float visualFlow = 5;
     [SerializeField] private float tiltSpeed = 5; // degrees/s
     [SerializeField] private float pourSpeed = 1;
-    [SerializeField] private float cupFillDelay = 1;
     private bool isPouring;
     public bool IsPouring => isPouring;
     private Coroutine startPour;
@@ -51,25 +48,6 @@ public class Bottle : MonoBehaviour
                                                      targetPosition,
                                                      ref vectorVelocity,
                                                      transitionTime);
-        if (isPouring)
-        {
-            //GameObject newDrop = Instantiate(drop
-            
-            /*
-            particles.transform.rotation = Quaternion.identity;
-            ParticleSystem.ShapeModule shape = particles.shape;
-            shape.rotation = transform.eulerAngles;
-            
-            ParticleSystem.EmissionModule emission = particles.emission;
-            float particleCount = (transform.eulerAngles.z - 30) * visualFlow;
-            if (particleCount > 500)
-            {
-                particleCount = 0;
-            }
-            emission.rateOverTime = particleCount;
-            Debug.Log(particleCount);
-            */
-        }
     }
 
     public void Highlight()
@@ -155,18 +133,6 @@ public class Bottle : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator FillCup()
-    {
-        float amount = pourSpeed * (transform.eulerAngles.z - 30) * Time.deltaTime;
-        
-        yield return new WaitForSeconds(cupFillDelay);
-        
-        if (amount > 0)
-        {
-            //pour.RaiseEvent(amount);
-        }
-    }
-
     private IEnumerator Pour()
     {
         isPouring = true;
@@ -174,8 +140,6 @@ public class Bottle : MonoBehaviour
         
         while (true)
         {
-            StartCoroutine(FillCup());
-            
             float zAngle = Mathf.Clamp(transform.eulerAngles.z +
                                        tiltSpeed * Time.deltaTime, 0, 135);
             
@@ -192,8 +156,6 @@ public class Bottle : MonoBehaviour
     
         while (transform.eulerAngles.z < 180 && transform.eulerAngles.z != 0)
         {
-            StartCoroutine(FillCup());
-            
             transform.eulerAngles += Vector3.back * tiltSpeed * Time.deltaTime;
             
             yield return null;
@@ -202,6 +164,5 @@ public class Bottle : MonoBehaviour
         transform.eulerAngles = new(transform.eulerAngles.x,
                                     transform.eulerAngles.y, 0);
         isPouring = false;
-        Debug.Log("Stop pouring");
     }
 }

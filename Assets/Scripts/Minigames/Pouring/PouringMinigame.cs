@@ -7,7 +7,7 @@ public class PouringMinigame : MonoBehaviour
     [SerializeField] private Bottle[] bottles;
     [SerializeField] private Cup cup;
     private int currentBottleIndex = 0;
-     
+      
     void Start()
     {
         bottles[currentBottleIndex].Highlight();
@@ -16,7 +16,6 @@ public class PouringMinigame : MonoBehaviour
     public void FillCup()
     {
         cup.Fill(bottles[currentBottleIndex].color);
-        Debug.Log("current bottle: " + currentBottleIndex);
     }
     
     public void CycleBottles()

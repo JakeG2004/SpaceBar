@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3178322734338822865, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
+      propertyPath: color
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3691718350121867807, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.55
@@ -269,9 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd250333f0a4a78b19532ed5e7df36bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cup
+  cupFull: {fileID: 11400000, guid: 5f6d4978f84b45236903b4cb9277c9d5, type: 2}
+  sufficientColor: {fileID: 11400000, guid: c630570618ece28e2acdb3b540aca989, type: 2}
   filling: {fileID: 570515198}
   fillSprite: {fileID: 784105469}
-  maxFilling: 500
+  maxFilling: 100
 --- !u!212 &444805284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -798,6 +804,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.21176471
       objectReference: {fileID: 0}
+    - target: {fileID: 3178322734338822865, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
+      propertyPath: color
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3691718350121867807, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.99
@@ -891,6 +901,7 @@ GameObject:
   - component: {fileID: 570515199}
   - component: {fileID: 570515201}
   - component: {fileID: 570515200}
+  - component: {fileID: 570515202}
   m_Layer: 0
   m_Name: FillingParent
   m_TagString: Untagged
@@ -1000,6 +1011,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CupFilling
   fillingCollision: {fileID: 11400000, guid: 0dfaa0aebeafe1692b85ee61d3de7a6c, type: 2}
+--- !u!114 &570515202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570515197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: 5f6d4978f84b45236903b4cb9277c9d5, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 570515201}
+        m_TargetAssemblyTypeName: CupFilling, Assembly-CSharp
+        m_MethodName: StopFilling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
