@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
 
     [Header("Interaction Variables")]
     [SerializeField] private GameObject _interactionGame;
+    [SerializeField] public VoidEventChannelSO eventToRaise;
 
     private Color _originalColor;
 
@@ -24,8 +25,15 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        _interactionGame.SetActive(true);
-        InputManager.Instance.SetMinigameMode();
+        if (_interactionGame != null)
+        {
+            _interactionGame.SetActive(true);
+            InputManager.Instance.SetMinigameMode();
+        }
+        else
+        {
+            eventToRaise.RaiseEvent();
+        }
     }
 
     // Sets the highlight color

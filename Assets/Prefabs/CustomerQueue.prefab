@@ -11,6 +11,12 @@ GameObject:
   - component: {fileID: 2035472480157306618}
   - component: {fileID: 3313791396712681320}
   - component: {fileID: 3678801623552350672}
+  - component: {fileID: 8312949555512290677}
+  - component: {fileID: 8976861311942535100}
+  - component: {fileID: 6896789185057106239}
+  - component: {fileID: 5179948742351418728}
+  - component: {fileID: 7543877472802873514}
+  - component: {fileID: 5154184030303811442}
   m_Layer: 0
   m_Name: CustomerQueue
   m_TagString: Untagged
@@ -103,7 +109,170 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072e942d4b56f3e9f971c5b323ae510f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QueueManager
+  cupReturn: {fileID: 0}
   customer: {fileID: 9082405896399699284, guid: 1cae2fe35486acded91c7e2cbe013a2f, type: 3}
   spawnX: 11
   spawnY: 0
   customerSpacing: 1.4
+--- !u!114 &8312949555512290677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910636447666381394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9589543e807df80d95ac27c9e1dd2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjectEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: 4de299c0962c67a6ebaef43c2c2ef309, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3678801623552350672}
+        m_TargetAssemblyTypeName: QueueManager, Assembly-CSharp
+        m_MethodName: CustomerLeave
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8976861311942535100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910636447666381394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: 4e36cae60209b8a6fa78a6f69a2d3994, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3678801623552350672}
+        m_TargetAssemblyTypeName: QueueManager, Assembly-CSharp
+        m_MethodName: CustomerServed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5179948742351418728}
+        m_TargetAssemblyTypeName: DrinkOrderAndDropoff, Assembly-CSharp
+        m_MethodName: DrinkServed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6896789185057106239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910636447666381394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834026901b042e20585c2de9af5501ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  _renderer: {fileID: 3313791396712681320}
+  _highlightColor: {r: 0, g: 1, b: 1, a: 1}
+  _interactionGame: {fileID: 0}
+  eventToRaise: {fileID: 11400000, guid: 4b3576ec0b2b61a48808cbacc6db0535, type: 2}
+--- !u!114 &5179948742351418728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910636447666381394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3147f1c5c4a5320d7a7410c9220b284b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkOrderAndDropoff
+  orderDrink: {fileID: 11400000, guid: 4b3576ec0b2b61a48808cbacc6db0535, type: 2}
+  serveDrink: {fileID: 11400000, guid: 4e36cae60209b8a6fa78a6f69a2d3994, type: 2}
+--- !u!114 &7543877472802873514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910636447666381394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: 4b3576ec0b2b61a48808cbacc6db0535, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5179948742351418728}
+        m_TargetAssemblyTypeName: DrinkOrderAndDropoff, Assembly-CSharp
+        m_MethodName: DrinkOrdered
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &5154184030303811442
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910636447666381394}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.014234781, y: 0.026278675}
+  m_Radius: 0.5284695

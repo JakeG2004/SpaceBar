@@ -41,9 +41,12 @@ public class QueueManager : MonoBehaviour
     
     public void CustomerServed()
     {
-        Customer customer = customers[0].GetComponent<Customer>();
-        customer.hasBeenServed = true;
-        customer.Leave();
+        if (customers.Count > 0)
+        {
+            Customer customer = customers[0].GetComponent<Customer>();
+            customer.hasBeenServed = true;
+            customer.Leave();
+        }
     }
     
     public void CustomerLeave(GameObject customer)
