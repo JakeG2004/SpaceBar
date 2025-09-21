@@ -82,6 +82,12 @@ public class DrinkManager : MonoBehaviour
     public void ServeCustomer()
     {
         cleanCups--;
+        ResetDrink();
+    }
+
+    public void ResetDrink()
+    {
+        _currentDrink = new();
     }
 
     public void WashedCups()

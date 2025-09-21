@@ -1857,6 +1857,7 @@ GameObject:
   - component: {fileID: 1236252428}
   - component: {fileID: 1236252430}
   - component: {fileID: 1236252431}
+  - component: {fileID: 1236252432}
   m_Layer: 0
   m_Name: DrinkManager
   m_TagString: Untagged
@@ -1941,6 +1942,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: DrinkManager, Assembly-CSharp
         m_MethodName: WashedCups
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1236252432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236252427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7bc7a811d2ee4ad4b1ae8b0a06f80d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkColorEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: c630570618ece28e2acdb3b540aca989, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1236252428}
+        m_TargetAssemblyTypeName: DrinkManager, Assembly-CSharp
+        m_MethodName: SetDrinkBase
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
