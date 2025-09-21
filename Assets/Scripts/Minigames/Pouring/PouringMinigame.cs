@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class PouringMinigame : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _onComplete;
+    [SerializeField] private VoidEventChannelSO minigameComplete;
     [SerializeField] private Bottle[] bottles;
     [SerializeField] private Cup cup;
     private int currentBottleIndex = 0;
@@ -13,9 +13,9 @@ public class PouringMinigame : MonoBehaviour
         bottles[currentBottleIndex].Highlight();
     }
     
-    public void FillCup()
+    public void FillCup(Color color)
     {
-        cup.Fill(bottles[currentBottleIndex].color);
+        cup.Fill(color);
     }
     
     public void CycleBottles()
@@ -36,5 +36,12 @@ public class PouringMinigame : MonoBehaviour
     public void StopPour()
     {
         bottles[currentBottleIndex].StopPour();
+    }
+    
+    public void CupIsFull()
+    {
+        // Insert feedback so user knows if it's good or not.    
+        
+        minigameComplete.RaiseEvent();
     }
 }

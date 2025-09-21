@@ -3,9 +3,8 @@ using System.Collections;
 
 public class Bottle : MonoBehaviour
 {
-    [SerializeField] private FloatEventChannelSO pour;
     [SerializeField] private Transform tip;
-    [SerializeField] public DrinkColor color;
+    [SerializeField] private Color color;
     [SerializeField] GameObject drop;
     [SerializeField] float dropAngleVariance;
     [SerializeField] float pressure;
@@ -27,15 +26,24 @@ public class Bottle : MonoBehaviour
     private Vector3 normalPosition;
     private Vector3 targetPosition;
     private Vector3 vectorVelocity;
+    
+    private Quaternion normalRotation;
 
     void Awake()
     {
+        color = GetComponent<SpriteRenderer>().color;
+        
         normalScale = transform.localScale.x;
         normalPosition = transform.localPosition;
+        normalRotation = transform.rotation;
         
         targetScale = normalScale;
         targetPosition = normalPosition;
-        
+    }
+    
+    void OnEnable()
+    {
+        transform.rotation = normalRotation;
         StartCoroutine(DropSpawner());
     }
 
@@ -44,10 +52,8 @@ public class Bottle : MonoBehaviour
         float scale = Mathf.SmoothDamp(transform.localScale.x, targetScale,
                                        ref floatVelocity, transitionTime);
         transform.localScale = Vector3.one * scale;
-        transform.localPosition = Vector3.SmoothDamp(transform.localPosition,
-                                                     targetPosition,
-                                                     ref vectorVelocity,
-                                                     transitionTime);
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPosition,
+                                                     ref vectorVelocity, transitionTime);
     }
 
     public void Highlight()
@@ -83,9 +89,13 @@ public class Bottle : MonoBehaviour
     private void SpawnDrop()
     {
         // Instantiate drop
-        GameObject newDrop = Instantiate(drop, tip.position, Quaternion.identity);
-
-        Rigidbody2D rb = newDrop.GetComponent<Rigidbody2D>();
+        GameObject newDrop = Instantiate(drop, tip.position, Quaternion.identity, transform.parent);
+        
+        // Change color
+        newDrop.GetComponent<SpriteRenderer>().color = color * Random.Range(0.75f, 1.25f);
+        
+        // Vary size
+        newDrop.transform.localScale = newDrop.transform.localScale * Random.Range(0.75f, 1.25f);
         
         // Base direction (forward from spawner)
         Vector3 direction = transform.up;
@@ -99,6 +109,7 @@ public class Bottle : MonoBehaviour
         Vector3 finalDirection = randomRot * direction;
 
         // Apply force
+        Rigidbody2D rb = newDrop.GetComponent<Rigidbody2D>();
         rb.AddForce(finalDirection.normalized * pressure, ForceMode2D.Impulse);
     }
 
@@ -136,7 +147,6 @@ public class Bottle : MonoBehaviour
     private IEnumerator Pour()
     {
         isPouring = true;
-        Debug.Log("Pouring");
         
         while (true)
         {

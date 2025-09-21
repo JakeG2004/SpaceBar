@@ -13,47 +13,46 @@ public class Cup : MonoBehaviour
     private int greenFill;
     private int blueFill;
     
-    void Awake()
+    void OnEnable()
     {
         fillSprite.color = Color.black;
+        fillAmount = 0;
+        filling.localScale = new(filling.localScale.x, 0.001f, filling.localScale.z);
+
+        redFill = 0;
+        greenFill = 0;
+        blueFill = 0;
     }
 
-    public void Fill(DrinkColor color)
+    public void Fill(Color color)
     {
-        Color liquidColor;
-        switch (color)
+        if (color.r > color.g && color.r > color.b)
         {
-            case DrinkColor.RED:
-                liquidColor = Color.red;
-                redFill++;
-                if (redFill >= maxFilling * 0.4f)
-                {
-                    sufficientColor.RaiseEvent(color);
-                }
-                break;
-            case DrinkColor.GREEN:
-                liquidColor = Color.green;
-                greenFill++;
-                if (greenFill >= maxFilling * 0.4f)
-                {
-                    sufficientColor.RaiseEvent(color);
-                }
-                break;
-            default:
-                liquidColor = Color.blue;
-                blueFill++;
-                if (blueFill >= maxFilling * 0.4f)
-                {
-                    sufficientColor.RaiseEvent(color);
-                }
-                break;
+            redFill++;
+            if (redFill >= maxFilling * 0.4f)
+            {
+                sufficientColor.RaiseEvent(DrinkColor.RED);
+            }
         }
-        
-        
+        else if (color.g > color.r && color.g > color.b)
+        {
+            greenFill++;
+            if (greenFill >= maxFilling * 0.4f)
+            {
+                sufficientColor.RaiseEvent(DrinkColor.GREEN);
+            }
+        }
+        else
+        {
+            blueFill++;
+            if (blueFill >= maxFilling * 0.4f)
+            {
+                sufficientColor.RaiseEvent(DrinkColor.BLUE);
+            }
+        }    
         
         fillSprite.color = fillSprite.color * ((float) fillAmount / (fillAmount + 1f))
-                           + liquidColor / (fillAmount + 1f);
-        Debug.Log("Denominator color: " + liquidColor / (fillAmount + 1f));
+                           + color / (fillAmount + 1f);
                            
         fillAmount++;
         

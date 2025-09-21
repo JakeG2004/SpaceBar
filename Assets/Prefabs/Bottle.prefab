@@ -104,18 +104,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfd3c7c1000c04d6a2de4ed2f66b576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bottle
-  pour: {fileID: 11400000, guid: b58bddd8d254edade8126638dae6c6c0, type: 2}
   tip: {fileID: 6652055504362057385}
-  color: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
   drop: {fileID: 4676964950106766140, guid: 8b3df377ae9b9f79c94fa0d1529da8c9, type: 3}
   dropAngleVariance: 8
   pressure: 2.5
-  particles: {fileID: 0}
-  visualFlow: 3
   tiltSpeed: 45
   pourSpeed: 0.3
-  cupFillDelay: 1
-  transitionTime: 0.25
+  transitionTime: 0.1
   highlightedScale: 1.5
   highlightedPosition: {x: -5, y: 2.17, z: 0}
 --- !u!1 &5033047179221882441

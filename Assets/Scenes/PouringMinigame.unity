@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2514340157625060409, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3178322734338822865, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
       propertyPath: color
       value: 1
@@ -324,7 +328,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.14901961}
   m_FlipX: 0
@@ -804,6 +808,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.21176471
       objectReference: {fileID: 0}
+    - target: {fileID: 2514340157625060409, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3178322734338822865, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
       propertyPath: color
       value: 2
@@ -1010,7 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10888e7865089a408aca7ded8ca9e77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CupFilling
-  fillingCollision: {fileID: 11400000, guid: 0dfaa0aebeafe1692b85ee61d3de7a6c, type: 2}
+  fillingCollision: {fileID: 11400000, guid: dff139de193f811058ddb54363473c9d, type: 2}
 --- !u!114 &570515202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1362,7 +1370,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1724,6 +1732,96 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1938738243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938738244}
+  - component: {fileID: 1938738245}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938738244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938738243}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.91747, y: -0.83, z: 0}
+  m_LocalScale: {x: 18.24, y: 10.2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2007971190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1938738245
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938738243}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2007971187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1834,8 @@ GameObject:
   - component: {fileID: 2007971189}
   - component: {fileID: 2007971188}
   - component: {fileID: 2007971191}
+  - component: {fileID: 2007971192}
+  - component: {fileID: 2007971193}
   m_Layer: 0
   m_Name: PouringMinigame
   m_TagString: Untagged
@@ -1755,9 +1855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b74541c156009898f47c31a2e8e6dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PouringMinigame
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  minigameComplete: {fileID: 11400000, guid: e0448279e2474bd0f8bc610feb4332bd, type: 2}
   bottles:
   - {fileID: 1344934110}
   - {fileID: 110890044}
@@ -1837,6 +1935,7 @@ Transform:
   - {fileID: 110890045}
   - {fileID: 536115340}
   - {fileID: 444805281}
+  - {fileID: 1938738244}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2007971191
@@ -1848,16 +1947,72 @@ MonoBehaviour:
   m_GameObject: {fileID: 2007971187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Script: {fileID: 11500000, guid: bbf9226fabed76d9ca75a284ba8150eb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
-  eventChannel: {fileID: 11400000, guid: 0dfaa0aebeafe1692b85ee61d3de7a6c, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::ColorEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: dff139de193f811058ddb54363473c9d, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2007971188}
         m_TargetAssemblyTypeName: PouringMinigame, Assembly-CSharp
         m_MethodName: FillCup
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2007971192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007971187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: 5f6d4978f84b45236903b4cb9277c9d5, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2007971188}
+        m_TargetAssemblyTypeName: PouringMinigame, Assembly-CSharp
+        m_MethodName: CupIsFull
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2007971193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007971187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: e0448279e2474bd0f8bc610feb4332bd, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2007971189}
+        m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
+        m_MethodName: SetMinigameComplete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1875,6 +2030,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2007971190}
     m_Modifications:
+    - target: {fileID: 2514340157625060409, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3178322734338822865, guid: 96b1ebf67fbb208b5a3beff9d030ac36, type: 3}
       propertyPath: particles
       value: 
