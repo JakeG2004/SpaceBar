@@ -49,11 +49,11 @@ public class Menu : MonoBehaviour
 
     public void OnHold()
     {
-        _curSelection.GetComponent<ButtonBarFiller>()?.StartFill();
+        _curSelection?.GetComponent<ButtonBarFiller>()?.StartFill();
     }
 
     public void OnHoldRelease()
     {
-        _curSelection.GetComponent<ButtonBarFiller>()?.StopFill();
+        _curSelection?.GetComponent<ButtonBarFiller>()?.StopFill();
     }
 }

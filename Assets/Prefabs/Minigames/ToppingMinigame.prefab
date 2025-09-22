@@ -589,6 +589,7 @@ MonoBehaviour:
   _liquid: {fileID: 0}
   _finalPos: {fileID: 5120445959950833648}
   _initialPos: {fileID: 646411696891649798}
+  _drinkFill: {fileID: 79409494535467516}
 --- !u!1 &5608037756254594425
 GameObject:
   m_ObjectHideFlags: 0

@@ -126,6 +126,7 @@ public class DrinkManager : MonoBehaviour
     public void ResetDrink()
     {
         _currentDrink = new();
+        _drinkColor = Color.white;
     }
 
     public void WashedCups()
