@@ -8,6 +8,10 @@ public class OrderDisplay : MonoBehaviour
     public GameObject FirstColor;
     public GameObject SecondColor;
     public GameObject DrinkName;
+    public Sprite Lemon;
+    public Sprite Pepper;
+    public Sprite Umbrella;
+    public Sprite Olive;
 
     private Vector3 initialPos;
     private Vector3 hiddenPos;
@@ -43,11 +47,11 @@ public class OrderDisplay : MonoBehaviour
     {
         // animates order position
         transform.position = hiddenPos;
-        
+
         // order items
         DrinkName.GetComponent<TextMeshProUGUI>().text = drink.drinkName;
 
-        Toppings.GetComponent<SpriteRenderer>().color = ToppingToColor(drink.topping);
+        Toppings.GetComponent<SpriteRenderer>().sprite = ToppingTexture(drink.topping);
         Toppings.SetActive(drink.topping != DrinkTopping.NONE);
 
         FirstColor.GetComponent<SpriteRenderer>().color = DrinkColorToColor(drink.drink1);
@@ -76,5 +80,17 @@ public class OrderDisplay : MonoBehaviour
             case DrinkColor.RED: return Color.red;
         }
         return Color.black;
+    }
+
+    private Sprite ToppingTexture(DrinkTopping topping)
+    {
+        switch (topping)
+        {
+            case DrinkTopping.LEMON: return Lemon;
+            case DrinkTopping.PEPPER: return Pepper;
+            case DrinkTopping.OLIVE: return Olive;
+            case DrinkTopping.UMBRELLA: return Umbrella;
+        }
+        return Umbrella;
     }
 }

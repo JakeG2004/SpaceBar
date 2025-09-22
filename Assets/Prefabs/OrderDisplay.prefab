@@ -566,6 +566,10 @@ MonoBehaviour:
   FirstColor: {fileID: 7544479965825935798}
   SecondColor: {fileID: 4753912997227512799}
   DrinkName: {fileID: 5815589738184815269}
+  Lemon: {fileID: -4588854041495768185, guid: af2a7b6301391fc48880b580d8b317a8, type: 3}
+  Pepper: {fileID: 8374363231432968964, guid: e8cac98d845d76b439fa0c5cdd62214a, type: 3}
+  Umbrella: {fileID: -4868476205444432284, guid: 3ee17297e7953924eaab96105c075741, type: 3}
+  Olive: {fileID: -26916986612398448, guid: 3c2d82773aade1c45aa633d910090a1d, type: 3}
 --- !u!114 &7766497421057369976
 MonoBehaviour:
   m_ObjectHideFlags: 0
