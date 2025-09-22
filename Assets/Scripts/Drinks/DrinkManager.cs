@@ -12,6 +12,7 @@ public class DrinkManager : MonoBehaviour
 
     public int cleanCups = 10;
     public int dirtyCups = 0;
+    public int customersServed = 0;
 
     private bool _canGetNewOrder = true;
     public bool _hasOrder = false;
@@ -117,6 +118,7 @@ public class DrinkManager : MonoBehaviour
         _hasOrder = false;
 
         cleanCups--;
+        customersServed++;
         ResetDrink();
     }
 
