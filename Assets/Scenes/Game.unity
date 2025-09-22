@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountdownTimer
   timerDone: {fileID: 11400000, guid: 2ba2a5366c9351bf2ab4e71be3abe553, type: 2}
-  startMinutes: 2
+  startMinutes: 4
 --- !u!1 &126857133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3496,8 +3496,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4634165881838932105, guid: 35da915c4aaf9448197c1378369a01f2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1741087945}
   m_SourcePrefab: {fileID: 100100000, guid: 35da915c4aaf9448197c1378369a01f2, type: 3}
+--- !u!1 &1741087939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4634165881838932105, guid: 35da915c4aaf9448197c1378369a01f2, type: 3}
+  m_PrefabInstance: {fileID: 1732898235}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1741087940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5256261594501779046, guid: 35da915c4aaf9448197c1378369a01f2, type: 3}
+  m_PrefabInstance: {fileID: 1732898235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741087939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d846765da6caed5c8ae97669ef491c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+--- !u!114 &1741087945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741087939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: 2ba2a5366c9351bf2ab4e71be3abe553, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1741087940}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: TimeUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1826735814
 PrefabInstance:
   m_ObjectHideFlags: 0

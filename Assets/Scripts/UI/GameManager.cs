@@ -23,12 +23,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        var timer = _gameTimer;
+        /*var timer = _gameTimer;
         _gameTimer = Math.Max(_gameTimer - Time.deltaTime, 0f);
         if (_gameTimer == 0f && timer != _gameTimer)
         {
             TimerExpiredEvent.RaiseEvent();
-        }
+        }*/
     }
 
     public float GetGameTimer() => _gameTimer;
@@ -46,5 +46,10 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    
+    public void TimeUp()
+    {
+        SceneManager.LoadScene("WinScreen");
     }
 }
