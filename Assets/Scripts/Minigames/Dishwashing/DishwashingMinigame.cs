@@ -87,7 +87,7 @@ public class DishwashingMinigame : MonoBehaviour
     private IEnumerator DispenseWater(int amount)
     {
         _isDispensing = true;
-        SoundManager.Instance.PlayOneShot(SoundType.FAUCET, 0.1f);
+        SoundManager.Instance?.PlayOneShot(SoundType.FAUCET, 0.1f);
         for (int i = 0; i < amount; i++)
         {
             Instantiate(_waterPrefab, _waterSpawnPoint.position, Quaternion.identity);

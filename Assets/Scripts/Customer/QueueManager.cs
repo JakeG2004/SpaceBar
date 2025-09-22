@@ -20,18 +20,6 @@ public class QueueManager : MonoBehaviour
     {
         StartCoroutine(SpawnCustomers());
     }
-
-    void Update()
-    {
-        if(Input.GetKeyDown("c"))
-        {
-            AddCustomer();
-        }
-        if (Input.GetKeyDown("s"))
-        {
-            CustomerServed();
-        }
-    }
     
     public void AddCustomer()
     {
@@ -57,8 +45,8 @@ public class QueueManager : MonoBehaviour
     
     public void CustomerLeave(GameObject customer)
     {
-        //customers.Remove(customer);
-        //ReassignTargetPositions();
+        customers.Remove(customer);
+        ReassignTargetPositions();
     }
     
     private void ReassignTargetPositions()

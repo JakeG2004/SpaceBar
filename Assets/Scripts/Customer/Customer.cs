@@ -27,7 +27,7 @@ public class Customer : MonoBehaviour
         returnCupTime = Random.Range(avgReturnCupTime - deviation,
                                      avgReturnCupTime + deviation);
                                      
-        StartCoroutine(TimedLeave());
+        // StartCoroutine(TimedLeave());
     }
 
     void Update()
