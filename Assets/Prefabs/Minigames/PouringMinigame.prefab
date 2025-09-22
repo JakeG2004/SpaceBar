@@ -387,6 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PouringMinigame
   minigameComplete: {fileID: 11400000, guid: e0448279e2474bd0f8bc610feb4332bd, type: 2}
   minigameStarted: {fileID: 0}
+  redFlash: {fileID: 11400000, guid: 2f73854158efde00190f2532634c593a, type: 2}
   winParticles: {fileID: 2271468661702502114}
   bottles:
   - {fileID: 2970191067956988004}

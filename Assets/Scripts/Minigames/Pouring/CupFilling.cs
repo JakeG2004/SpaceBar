@@ -8,6 +8,7 @@ public class CupFilling : MonoBehaviour
     void OnEnable()
     {
         isFull = false;
+        Debug.Log("Cup not full");
     }
     
     void OnCollisionEnter2D(Collision2D collision)
@@ -22,5 +23,6 @@ public class CupFilling : MonoBehaviour
     public void StopFilling()
     {
         isFull = true;
+        Debug.Log("Cup full");
     }
 }
