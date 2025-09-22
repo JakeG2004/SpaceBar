@@ -52,15 +52,19 @@ public class Cup : MonoBehaviour
                            + color / (fillAmount + 1f);
 
         fillAmount++;
-        if (fillAmount >= maxFilling)
+        if (!Mathf.Approximately(fillAmount, 0f) && fillAmount >= maxFilling)
         {
             DrinkManager.Instance.SaveDrinkColor(fillSprite.color);
             cupFull.RaiseEvent();
+
         }
 
-        filling.localScale = new(filling.localScale.x,
-                                 (float) fillAmount / maxFilling,
-                                 filling.localScale.z);
+        if (fillAmount != 0)
+        {
+            filling.localScale = new(filling.localScale.x,
+                                     (float) fillAmount / maxFilling,
+                                     filling.localScale.z);
+        }
     }
 
     private void CheckMilestones(DrinkColor color, ref int fill, ref bool hit40, ref bool hit80)
