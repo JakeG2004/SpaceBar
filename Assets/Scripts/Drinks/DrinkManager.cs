@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class DrinkManager : MonoBehaviour
 {
     public static DrinkManager Instance { get; private set; }
+    [SerializeField] private TMP_Text cleanCupCount; 
     public List<Drink> drinks = new();
     private Drink _currentDrink = new();
     private Drink _targetDrink = new();
@@ -29,6 +31,8 @@ public class DrinkManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+        
+        cleanCupCount.text = cleanCups.ToString();
     }
 
     void Start()
@@ -119,6 +123,7 @@ public class DrinkManager : MonoBehaviour
 
         cleanCups--;
         customersServed++;
+        cleanCupCount.text = cleanCups.ToString();
         ResetDrink();
     }
 
@@ -132,6 +137,7 @@ public class DrinkManager : MonoBehaviour
     {
         dirtyCups--;
         cleanCups++;
+        cleanCupCount.text = cleanCups.ToString();
     }
 
     public void CustomerReturnsDrink()

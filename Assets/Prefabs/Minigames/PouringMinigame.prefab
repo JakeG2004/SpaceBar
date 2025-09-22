@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 1837088274146538904}
   - component: {fileID: 2578866364178794060}
   - component: {fileID: 1492390830207453302}
+  - component: {fileID: 4171754248838970850}
   m_Layer: 0
   m_Name: PouringMinigame
   m_TagString: Untagged
@@ -470,6 +471,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: SetMinigameComplete
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4171754248838970850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895706765744418499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7bc7a811d2ee4ad4b1ae8b0a06f80d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkColorEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: c630570618ece28e2acdb3b540aca989, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4091906280454284675}
+        m_TargetAssemblyTypeName: PouringMinigame, Assembly-CSharp
+        m_MethodName: NewDrinkColor
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
