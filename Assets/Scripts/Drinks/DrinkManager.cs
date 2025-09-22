@@ -59,19 +59,21 @@ public class DrinkManager : MonoBehaviour
         _targetDrink = drink;
     }
 
+    public Drink GetTargetDrink() => _targetDrink;
+
     public bool CurrentDrinkIsValid()
     {
-        if(_targetDrink.drink1 != _currentDrink.drink1)
+        if (_targetDrink.drink1 != _currentDrink.drink1)
         {
             return false;
         }
 
-        if(_targetDrink.drink2 != _currentDrink.drink2)
+        if (_targetDrink.drink2 != _currentDrink.drink2)
         {
             return false;
         }
 
-        if(_targetDrink.topping != _currentDrink.topping)
+        if (_targetDrink.topping != _currentDrink.topping)
         {
             return false;
         }
