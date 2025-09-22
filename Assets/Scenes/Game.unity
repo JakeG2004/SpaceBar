@@ -650,8 +650,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b070da5d1ed821a8ba60c6c0ace3230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrinkManager
+  _orderPlacedEvent: {fileID: 0}
   cleanCups: 0
   dirtyCups: 6
+  _hasOrder: 0
 --- !u!4 &341323381
 Transform:
   m_ObjectHideFlags: 0
@@ -1102,6 +1104,9 @@ MonoBehaviour:
   _renderer: {fileID: 0}
   _highlightColor: {r: 0, g: 1, b: 1, a: 1}
   _interactionGame: {fileID: 1826735816}
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls: []
   eventToRaise: {fileID: 0}
 --- !u!212 &695572837
 SpriteRenderer:
@@ -1212,6 +1217,145 @@ Transform:
   - {fileID: 695572838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &929484956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4244040394057565486, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_Name
+      value: DrinkManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.41347
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.36688
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732668563206637996, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874042477376338217, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      propertyPath: _orderPlacedEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 00ae77482ab83d4d8bf74e22792c4b18, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4244040394057565486, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 929484959}
+    - targetCorrespondingSourceObject: {fileID: 4244040394057565486, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 929484964}
+  m_SourcePrefab: {fileID: 100100000, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+--- !u!1 &929484957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4244040394057565486, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+  m_PrefabInstance: {fileID: 929484956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &929484958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5874042477376338217, guid: 762a0ddf159b9901aa526d839d75b398, type: 3}
+  m_PrefabInstance: {fileID: 929484956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929484957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b070da5d1ed821a8ba60c6c0ace3230a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkManager
+--- !u!114 &929484959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929484957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: 4b3576ec0b2b61a48808cbacc6db0535, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 929484958}
+        m_TargetAssemblyTypeName: DrinkManager, Assembly-CSharp
+        m_MethodName: CreateOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &929484964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929484957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dba6a99de9a7b84b053c9bb43d4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEventChannelSubscriber
+  eventChannel: {fileID: 11400000, guid: 2dbcefd4053fcaf1eba3bb2177ce5e92, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 929484958}
+        m_TargetAssemblyTypeName: DrinkManager, Assembly-CSharp
+        m_MethodName: ResetDrink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &939849125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DishwashingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 6134016080997591873, guid: e1811be5564ba6567880452868480940, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1445,6 +1593,9 @@ MonoBehaviour:
   _renderer: {fileID: 1458408503}
   _highlightColor: {r: 0, g: 1, b: 1, a: 1}
   _interactionGame: {fileID: 1173829565}
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls: []
   eventToRaise: {fileID: 0}
 --- !u!212 &1458408503
 SpriteRenderer:
@@ -1540,6 +1691,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834026901b042e20585c2de9af5501ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+--- !u!114 &1571331070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5179948742351418728, guid: b0b370319a54508688b81f6aab767075, type: 3}
+  m_PrefabInstance: {fileID: 1389185935229006002}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3147f1c5c4a5320d7a7410c9220b284b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkOrderAndDropoff
+--- !u!1001 &1653006812
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397819244414127060, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109881167236020358, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
+      propertyPath: m_Name
+      value: OrderDisplay
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab1af9f6b0ff040478bf47768623f00c, type: 3}
 --- !u!1001 &1826735814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1691,6 +1910,9 @@ MonoBehaviour:
   _renderer: {fileID: 1829556204}
   _highlightColor: {r: 0, g: 1, b: 1, a: 1}
   _interactionGame: {fileID: 1541843320}
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls: []
   eventToRaise: {fileID: 0}
 --- !u!212 &1829556204
 SpriteRenderer:
@@ -1886,6 +2108,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1941745572651246315, guid: 2dff363c55badc51dbfff9e6e34a1ea0, type: 3}
+      propertyPath: pourSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970191067956988004, guid: 2dff363c55badc51dbfff9e6e34a1ea0, type: 3}
+      propertyPath: pourSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091906280454284675, guid: 2dff363c55badc51dbfff9e6e34a1ea0, type: 3}
+      propertyPath: minigameStarted
+      value: 
+      objectReference: {fileID: 11400000, guid: 2dbcefd4053fcaf1eba3bb2177ce5e92, type: 2}
+    - target: {fileID: 5976751397498430406, guid: 2dff363c55badc51dbfff9e6e34a1ea0, type: 3}
+      propertyPath: pourSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7231109739894325861, guid: 2dff363c55badc51dbfff9e6e34a1ea0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.31795996
@@ -1991,7 +2229,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerQueue
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5154184030303811442, guid: b0b370319a54508688b81f6aab767075, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896789185057106239, guid: b0b370319a54508688b81f6aab767075, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896789185057106239, guid: b0b370319a54508688b81f6aab767075, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896789185057106239, guid: b0b370319a54508688b81f6aab767075, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1571331070}
+    - target: {fileID: 6896789185057106239, guid: b0b370319a54508688b81f6aab767075, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896789185057106239, guid: b0b370319a54508688b81f6aab767075, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleInteraction
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896789185057106239, guid: b0b370319a54508688b81f6aab767075, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DrinkOrderAndDropoff, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896789185057106239, guid: b0b370319a54508688b81f6aab767075, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7543877472802873514, guid: b0b370319a54508688b81f6aab767075, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2008,3 +2279,5 @@ SceneRoots:
   - {fileID: 1118420779651901554}
   - {fileID: 126857134}
   - {fileID: 873725203}
+  - {fileID: 929484956}
+  - {fileID: 1653006812}

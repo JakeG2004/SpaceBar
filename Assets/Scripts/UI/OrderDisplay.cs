@@ -20,10 +20,10 @@ public class OrderDisplay : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("r"))
-        {
-            ShowDrink(DrinkManager.Instance.GetRandomDrink());
-        }
+        // if (Input.GetKeyDown("r"))
+        // {
+        //     ShowDrink(DrinkManager.Instance.GetRandomDrink());
+        // }
 
         // animates order position
         transform.position = new Vector3(

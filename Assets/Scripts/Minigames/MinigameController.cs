@@ -20,7 +20,13 @@ public class MinigameController : MonoBehaviour
     
     void OnEnable()
     {
+        BindInputActions();
         _sceneObjects.SetActive(false);
+    }
+
+    void OnDisable()
+    {
+        UnbindInputActions();
     }
 
     public void SetMinigameComplete()
@@ -37,6 +43,13 @@ public class MinigameController : MonoBehaviour
         _inputHandler.OnHold += HandleHold;
         _inputHandler.OnCancelHold += CancelHold;
         _inputHandler.OnTap += HandleTap;
+    }
+
+    private void UnbindInputActions()
+    {
+        _inputHandler.OnHold -= HandleHold;
+        _inputHandler.OnCancelHold -= CancelHold;
+        _inputHandler.OnTap -= HandleTap;
     }
 
     private void HandleHold()

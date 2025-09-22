@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class QueueManager : MonoBehaviour
@@ -9,19 +10,24 @@ public class QueueManager : MonoBehaviour
     [SerializeField] private float spawnY;
     [SerializeField] private float customerSpacing = 0.8f;
     private List<GameObject> customers;
-    
+
     void Awake()
     {
         customers = new List<GameObject>();
     }
-    
+
+    void Start()
+    {
+        StartCoroutine(SpawnCustomers());
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown("c"))
+        if(Input.GetKeyDown("c"))
         {
             AddCustomer();
         }
-        else if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown("s"))
         {
             CustomerServed();
         }
@@ -51,8 +57,8 @@ public class QueueManager : MonoBehaviour
     
     public void CustomerLeave(GameObject customer)
     {
-        customers.Remove(customer);
-        ReassignTargetPositions();
+        //customers.Remove(customer);
+        //ReassignTargetPositions();
     }
     
     private void ReassignTargetPositions()
@@ -62,6 +68,17 @@ public class QueueManager : MonoBehaviour
             Customer customer = customers[i].GetComponent<Customer>();
             customer.targetPosition = Vector3.right * customerSpacing
                                       * (i + 1);
+        }
+    }
+
+    private IEnumerator SpawnCustomers()
+    {
+        yield return new WaitForSeconds(5f);
+
+        while(true)
+        {
+            AddCustomer();
+            yield return new WaitForSeconds(Random.Range(10f, 15f));
         }
     }
 }

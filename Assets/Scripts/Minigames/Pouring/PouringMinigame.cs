@@ -5,6 +5,7 @@ using System.Collections;
 public class PouringMinigame : MonoBehaviour
 {
     [SerializeField] private VoidEventChannelSO minigameComplete;
+    [SerializeField] private VoidEventChannelSO minigameStarted;
     [SerializeField] private ParticleSystem winParticles;
     [SerializeField] private Bottle[] bottles;
     [SerializeField] private Cup cup;
@@ -13,6 +14,11 @@ public class PouringMinigame : MonoBehaviour
     void Start()
     {
         bottles[currentBottleIndex].Highlight();
+    }
+
+    void OnEnable()
+    {
+        minigameStarted.RaiseEvent();
     }
     
     public void FillCup(Color color)

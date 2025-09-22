@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
 
     [Header("Interaction Variables")]
     [SerializeField] private GameObject _interactionGame;
+    [SerializeField] private UnityEvent _onInteract;
     [SerializeField] public VoidEventChannelSO eventToRaise;
 
     private Color _originalColor;
@@ -32,7 +33,8 @@ public class Interactable : MonoBehaviour
         }
         else
         {
-            eventToRaise.RaiseEvent();
+            _onInteract?.Invoke();
+            //eventToRaise.RaiseEvent();
         }
     }
 

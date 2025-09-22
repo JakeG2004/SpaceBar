@@ -8,13 +8,12 @@ public class Bottle : MonoBehaviour
     [SerializeField] GameObject drop;
     [SerializeField] float dropAngleVariance;
     [SerializeField] float pressure;
-    [SerializeField] private float tiltSpeed = 5; // degrees/s
-    [SerializeField] private float pourSpeed = 1;
+    [SerializeField] private float tiltSpeed = 90f; // degrees per second
+    [SerializeField] private float pourSpeed = 1f;
+
     private bool isPouring;
     public bool IsPouring => isPouring;
-    private Coroutine startPour;
-    private Coroutine stopPour;
-    
+
     [SerializeField] private float transitionTime = 1;
     
     [SerializeField] private float highlightedScale = 1.5f;
@@ -28,6 +27,7 @@ public class Bottle : MonoBehaviour
     private Vector3 vectorVelocity;
     
     private Quaternion normalRotation;
+    private Coroutine tiltRoutine;
 
     void Awake()
     {
@@ -49,11 +49,16 @@ public class Bottle : MonoBehaviour
 
     void Update()
     {
+        // Smooth scaling / positioning for highlight
         float scale = Mathf.SmoothDamp(transform.localScale.x, targetScale,
                                        ref floatVelocity, transitionTime);
         transform.localScale = Vector3.one * scale;
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPosition,
                                                      ref vectorVelocity, transitionTime);
+
+        // Auto-set pouring state based on angle
+        float zAngle = NormalizeAngle(transform.eulerAngles.z);
+        isPouring = zAngle > 30f && zAngle < 135f; 
     }
 
     public void Highlight()
@@ -70,55 +75,30 @@ public class Bottle : MonoBehaviour
 
     public void StartPour()
     {
-        if (stopPour is not null)
-        {
-            StopCoroutine(stopPour);
-        }
-        
-        if (gameObject.active)
-        {
-            startPour = StartCoroutine(Pour());
-        }
+        if (tiltRoutine != null) StopCoroutine(tiltRoutine);
+        tiltRoutine = StartCoroutine(TiltBottle(135f)); // Tilt forward
     }
     
     public void StopPour()
     {
-        if (startPour is not null)
-        {
-            StopCoroutine(startPour);
-        }
-        
-        if (gameObject.active)
-        {
-            stopPour = StartCoroutine(ReturnToUpright());
-        }
+        if (tiltRoutine != null) StopCoroutine(tiltRoutine);
+        tiltRoutine = StartCoroutine(TiltBottle(0f)); // Tilt back upright
     }
 
     private void SpawnDrop()
     {
-        // Instantiate drop
         GameObject newDrop = Instantiate(drop, tip.position, Quaternion.identity, transform.parent);
-        
-        // Change color
         newDrop.GetComponent<SpriteRenderer>().color = color * Random.Range(0.75f, 1.25f);
+        newDrop.transform.localScale *= Random.Range(0.75f, 1.25f);
         
-        // Vary size
-        newDrop.transform.localScale = newDrop.transform.localScale * Random.Range(0.75f, 1.25f);
-        
-        // Base direction (forward from spawner)
         Vector3 direction = transform.up;
-
-        // Apply random rotation within angleVariance
-        float angleX = Random.Range(-dropAngleVariance, dropAngleVariance);
-        float angleY = Random.Range(-dropAngleVariance, dropAngleVariance);
-        float angleZ = Random.Range(-dropAngleVariance, dropAngleVariance);
-
-        Quaternion randomRot = Quaternion.Euler(angleX, angleY, angleZ);
+        Quaternion randomRot = Quaternion.Euler(
+            Random.Range(-dropAngleVariance, dropAngleVariance),
+            Random.Range(-dropAngleVariance, dropAngleVariance),
+            Random.Range(-dropAngleVariance, dropAngleVariance));
+        
         Vector3 finalDirection = randomRot * direction;
-
-        // Apply force
-        Rigidbody2D rb = newDrop.GetComponent<Rigidbody2D>();
-        rb.AddForce(finalDirection.normalized * pressure, ForceMode2D.Impulse);
+        newDrop.GetComponent<Rigidbody2D>().AddForce(finalDirection.normalized * pressure, ForceMode2D.Impulse);
     }
 
     private IEnumerator DropSpawner()
@@ -127,60 +107,42 @@ public class Bottle : MonoBehaviour
         {
             while (isPouring)
             {
-                float dropsPerSecond = (transform.eulerAngles.z - 30) * pourSpeed;
-                if (dropsPerSecond < 2 || transform.eulerAngles.z > 135)
-                {
-                    break;
-                }
-                
+                float zAngle = NormalizeAngle(transform.eulerAngles.z);
+                float pourFactor = Mathf.InverseLerp(30f, 135f, zAngle); // 0 at 30°, 1 at 135°
+                float dropsPerSecond = Mathf.Max(2f, pourFactor * 30f * pourSpeed);
+
                 SpawnDrop();
-                
+
                 while (dropsPerSecond > 30)
                 {
                     SpawnDrop();
                     dropsPerSecond /= 2;
                 }
-                
+
                 yield return new WaitForSeconds(1 / dropsPerSecond);
             }
             yield return null;
         }
-    }    
-    
-    private IEnumerator MoveBottle()
-    {
-        yield return null;
     }
 
-    private IEnumerator Pour()
+    private IEnumerator TiltBottle(float targetZ)
     {
-        isPouring = true;
-        
-        while (true)
+        while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, targetZ)) > 0.1f)
         {
-            float zAngle = Mathf.Clamp(transform.eulerAngles.z +
-                                       tiltSpeed * Time.deltaTime, 0, 135);
-            
-            transform.eulerAngles = new(transform.eulerAngles.x,
-                                        transform.eulerAngles.y,
-                                        zAngle);
+            float newZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetZ, tiltSpeed * Time.deltaTime);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, newZ);
             yield return null;
         }
+
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, targetZ);
+        tiltRoutine = null;
     }
 
-    private IEnumerator ReturnToUpright()
+    /// <summary>
+    /// Converts angle from 0-360 to -180..180 for easier reasoning
+    /// </summary>
+    private float NormalizeAngle(float zAngle)
     {
-        float startAngle = transform.eulerAngles.z;
-    
-        while (transform.eulerAngles.z < 180 && transform.eulerAngles.z != 0)
-        {
-            transform.eulerAngles += Vector3.back * tiltSpeed * Time.deltaTime;
-            
-            yield return null;
-        }
-        
-        transform.eulerAngles = new(transform.eulerAngles.x,
-                                    transform.eulerAngles.y, 0);
-        isPouring = false;
+        return (zAngle > 180) ? zAngle - 360 : zAngle;
     }
 }

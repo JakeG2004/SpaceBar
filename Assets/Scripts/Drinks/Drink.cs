@@ -12,10 +12,10 @@ public class Drink
 
     public Drink()
     {
-        drink1 = DrinkColor.RED;
-        drink2 = DrinkColor.RED;
+        drink1 = DrinkColor.NONE;
+        drink2 = DrinkColor.NONE;
 
-        topping = DrinkTopping.PEPPER;
+        topping = DrinkTopping.NONE;
         drinkName = "Test Drink";
     }
 

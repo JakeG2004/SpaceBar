@@ -53,7 +53,7 @@ public class ToppingMinigame : MonoBehaviour
 
     private void FinishMinigame()
     {
-        SoundManager.Instance.PlayOneShot(SoundType.WIN);
+        SoundManager.Instance?.PlayOneShot(SoundType.WIN);
         StopCoroutine(_decreaseTapsCoroutine);
         StartCoroutine(MinigameEnd());
     }

@@ -8,9 +8,14 @@ public class DrinkManager : MonoBehaviour
     public List<Drink> drinks = new();
     private Drink _currentDrink = new();
     private Drink _targetDrink = new();
+    public DrinkEventChannelSO _orderPlacedEvent;
 
     public int cleanCups = 10;
     public int dirtyCups = 0;
+
+    private bool _canGetNewOrder = true;
+    public bool _hasOrder = false;
+    private Color _drinkColor = Color.white;
 
     void Awake()
     {
@@ -35,8 +40,33 @@ public class DrinkManager : MonoBehaviour
         return drinks[Random.Range(0, drinks.Count)];
     }
 
+    public void SaveDrinkColor(Color color)
+    {
+        _drinkColor = color;
+    }
+
+    public Color GetDrinkColor()
+    {
+        return _drinkColor;
+    }
+
+    public void CreateOrder()
+    {
+        if(!_canGetNewOrder)
+        {
+            return;
+        }
+
+        _hasOrder = true;
+        _canGetNewOrder = false;
+
+        SetTargetDrink(GetRandomDrink());
+        _orderPlacedEvent.RaiseEvent(_targetDrink);
+    }
+
     public void SetTopping(DrinkTopping topping)
     {
+        Debug.Log("Current topping: " + topping);
         _currentDrink.topping = topping;
     }
 
@@ -45,13 +75,14 @@ public class DrinkManager : MonoBehaviour
         if(_currentDrink.drink1 == DrinkColor.NONE)
         {
             _currentDrink.drink1 = baseColor;
-            return;
         }
         else if(_currentDrink.drink2 == DrinkColor.NONE)
         {
             _currentDrink.drink2 = baseColor;
-            return;
         }
+
+        Debug.Log("Drink1: " + _currentDrink.drink1);
+        Debug.Log("Drink2: " + _currentDrink.drink2);
     }
 
     public void SetTargetDrink(Drink drink)
@@ -83,6 +114,9 @@ public class DrinkManager : MonoBehaviour
 
     public void ServeCustomer()
     {
+        _canGetNewOrder = true;
+        _hasOrder = false;
+
         cleanCups--;
         ResetDrink();
     }

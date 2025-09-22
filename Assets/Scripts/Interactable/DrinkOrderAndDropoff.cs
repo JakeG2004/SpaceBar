@@ -10,14 +10,22 @@ public class DrinkOrderAndDropoff : MonoBehaviour
     {
         interactable = GetComponent<Interactable>();
     }
-    
-    public void DrinkOrdered()
+
+    public void HandleInteraction()
     {
-        interactable.eventToRaise = serveDrink;
-    }
-    
-    public void DrinkServed()
-    {
-        interactable.eventToRaise = orderDrink;
+        if(DrinkManager.Instance._hasOrder && DrinkManager.Instance.CurrentDrinkIsValid())
+        {
+            serveDrink.RaiseEvent();
+        }
+
+        else if (!DrinkManager.Instance._hasOrder)
+        {
+            orderDrink.RaiseEvent();
+        }
+
+        else
+        {
+            return;
+        }
     }
 }
