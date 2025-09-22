@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrinkManager
   _orderPlacedEvent: {fileID: 11400000, guid: 00ae77482ab83d4d8bf74e22792c4b18, type: 2}
-  cleanCups: 0
-  dirtyCups: 6
+  cleanCups: 6
+  dirtyCups: 0
   _hasOrder: 0
 --- !u!114 &8365225923325263343
 MonoBehaviour:

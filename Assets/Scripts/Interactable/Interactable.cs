@@ -28,14 +28,20 @@ public class Interactable : MonoBehaviour
     {
         if (_interactionGame != null)
         {
-            _interactionGame.SetActive(true);
-            InputManager.Instance.SetMinigameMode();
+            DoInteract();
         }
+
         else
         {
             _onInteract?.Invoke();
             //eventToRaise.RaiseEvent();
         }
+    }
+
+    public void DoInteract()
+    {
+        //_interactionGame.SetActive(true);
+        InputManager.Instance.SetMinigameMode();
     }
 
     // Sets the highlight color

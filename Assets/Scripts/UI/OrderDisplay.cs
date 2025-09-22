@@ -16,10 +16,13 @@ public class OrderDisplay : MonoBehaviour
     private Vector3 initialPos;
     private Vector3 hiddenPos;
 
+    private bool _showCard = false;
+
     void Start()
     {
         initialPos = transform.position;
         hiddenPos = initialPos + new Vector3(0.0f, 5.0f, 0.0f);
+        transform.position = hiddenPos;
     }
 
     void Update()
@@ -30,11 +33,27 @@ public class OrderDisplay : MonoBehaviour
         // }
 
         // animates order position
-        transform.position = new Vector3(
-            transform.position.x,
-            Math.Max(transform.position.y - 10f * Time.deltaTime, initialPos.y),
-            transform.position.z
-        );
+
+        if(!_showCard)
+        {
+            transform.position = new Vector3(
+                transform.position.x,
+                Math.Min(transform.position.y + 10f * Time.deltaTime, hiddenPos.y),
+                transform.position.z);
+        }
+
+        else
+        {
+            transform.position = new Vector3(
+                transform.position.x,
+                Math.Max(transform.position.y - 10f * Time.deltaTime, initialPos.y),
+                transform.position.z);
+        }
+    }
+
+    public void OnDrinkServed()
+    {
+        _showCard = false;
     }
 
     public void OnDrinkOrdered()
@@ -45,6 +64,8 @@ public class OrderDisplay : MonoBehaviour
     /// Displays the drink order on screen.
     public void ShowDrink(Drink drink)
     {
+        _showCard = true;
+
         // animates order position
         transform.position = hiddenPos;
 
@@ -56,7 +77,6 @@ public class OrderDisplay : MonoBehaviour
 
         FirstColor.GetComponent<SpriteRenderer>().color = DrinkColorToColor(drink.drink1);
         SecondColor.GetComponent<SpriteRenderer>().color = DrinkColorToColor(drink.drink2);
-        SecondColor.SetActive(drink.drink2 != DrinkColor.NONE && drink.drink1 != drink.drink2);
     }
 
     private Color ToppingToColor(DrinkTopping topping)

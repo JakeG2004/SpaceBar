@@ -96,12 +96,9 @@ public class DrinkManager : MonoBehaviour
 
     public bool CurrentDrinkIsValid()
     {
-        if (_targetDrink.drink1 != _currentDrink.drink1)
-        {
-            return false;
-        }
-
-        if (_targetDrink.drink2 != _currentDrink.drink2)
+        bool isCorrectDrink = (((_targetDrink.drink1 == _currentDrink.drink1) && (_targetDrink.drink2 == _currentDrink.drink2)) ||
+                                ((_targetDrink.drink1 == _currentDrink.drink2) && (_targetDrink.drink2 == _currentDrink.drink1)));
+        if(!isCorrectDrink)
         {
             return false;
         }
@@ -133,5 +130,10 @@ public class DrinkManager : MonoBehaviour
     {
         dirtyCups--;
         cleanCups++;
+    }
+
+    public void CustomerReturnsDrink()
+    {
+        dirtyCups++;
     }
 }

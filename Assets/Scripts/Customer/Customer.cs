@@ -10,6 +10,10 @@ public class Customer : MonoBehaviour
     [SerializeField] private float avgLeaveTime = 15;
     [SerializeField] private float avgReturnCupTime = 10;
     [SerializeField] private float deviation = 5;
+
+    [SerializeField] private GameObject _blueGuy;
+    [SerializeField] private GameObject _purpleGuy;
+    [SerializeField] private GameObject _greenGuy;
     
     private float leaveTime;
     private float returnCupTime;
@@ -28,6 +32,24 @@ public class Customer : MonoBehaviour
                                      avgReturnCupTime + deviation);
                                      
         // StartCoroutine(TimedLeave());
+    }
+
+    void Start()
+    {
+        switch(Random.Range(0, 4))
+        {
+            case 0:
+                _blueGuy.SetActive(true);
+                break;
+            case 1:
+                _purpleGuy.SetActive(true);
+                break;
+            case 2:
+                _greenGuy.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     void Update()
