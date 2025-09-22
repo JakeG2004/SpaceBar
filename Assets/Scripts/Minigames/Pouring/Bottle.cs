@@ -62,7 +62,7 @@ public class Bottle : MonoBehaviour
 
         // Auto-set pouring state based on angle
         float zAngle = NormalizeAngle(transform.eulerAngles.z);
-        isPouring = zAngle > 30f && zAngle < 135f; 
+        isPouring = zAngle > 30f && zAngle <= 135f; 
     }
 
     public void Highlight()
