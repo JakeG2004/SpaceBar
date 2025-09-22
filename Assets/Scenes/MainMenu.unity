@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d846765da6caed5c8ae97669ef491c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  TimerExpiredEvent: {fileID: 0}
 --- !u!1 &385083976
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +964,7 @@ MonoBehaviour:
           m_StringArgument: SpacePressed
           m_BoolArgument: 0
         m_CallState: 2
+  _sceneObjects: {fileID: 0}
 --- !u!114 &643682627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -979,7 +981,7 @@ MonoBehaviour:
   _buttons:
   - {fileID: 1553209176}
   - {fileID: 662811233}
-  _startActivated: 0
+  _startActivated: 1
 --- !u!95 &643682628
 Animator:
   serializedVersion: 7
@@ -1088,8 +1090,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 262874146}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: QuitGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1917,6 +1919,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330639105}
   m_CullTransparentMesh: 1
+--- !u!1001 &1387234687
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.56033
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.2999
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 76788276858002891, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713354033393979541, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
+      propertyPath: m_Name
+      value: MusicManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 41423eb5c451a914ea00825ed07bef96, type: 3}
 --- !u!1 &1553209174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,16 +2061,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1553209180}
-        m_TargetAssemblyTypeName: VoidEventRaiser, Assembly-CSharp
-        m_MethodName: RaiseEvent
-        m_Mode: 1
+      - m_Target: {fileID: 262874146}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1553209177
@@ -2689,3 +2748,4 @@ SceneRoots:
   - {fileID: 94723877}
   - {fileID: 1883262667}
   - {fileID: 262874145}
+  - {fileID: 1387234687}
