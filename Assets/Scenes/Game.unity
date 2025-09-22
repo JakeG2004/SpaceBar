@@ -779,8 +779,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _movementDirectionIndicator: {fileID: 300245554}
-  _movementRadius: 5
-  _indicatorSpeed: 1
+  _movementRadius: 1
+  _indicatorSpeed: 2.75
   _movementSpeed: 3
   _onTap:
     m_PersistentCalls:
