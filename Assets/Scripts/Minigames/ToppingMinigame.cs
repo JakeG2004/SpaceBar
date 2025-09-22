@@ -14,6 +14,7 @@ public class ToppingMinigame : MonoBehaviour
     [Header("Selection variables")]
     [SerializeField] private GameObject _curSelection;
     [SerializeField] private GameObject[] _selectables;
+    [SerializeField] private GameObject _liquid;
     [SerializeField] private Transform _finalPos;
     [SerializeField] private Transform _initialPos;
     
@@ -33,6 +34,12 @@ public class ToppingMinigame : MonoBehaviour
 
         _decreaseTapsCoroutine = StartCoroutine(TapDecreaser());
         SetToppingPos();
+
+        // if (DrinkManager.Instance.GetDrinkColor() == Color.white)
+        // {
+        //     _liquid.SetActive(false);
+        // }
+        // _liquid.GetComponent<SpriteRenderer>().color = DrinkManager.Instance.GetDrinkColor();
     }
 
     void OnDisable()
