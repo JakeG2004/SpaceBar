@@ -33,6 +33,12 @@ public class DishwashingMinigame : MonoBehaviour
     {
         _winText.SetActive(false);
         numDirtyCups = DrinkManager.Instance.dirtyCups;
+        if(numDirtyCups == 0)
+        {
+            StartCoroutine(WinGame());
+            return;
+        }
+
         _numCupsToClean = numDirtyCups;
         _waterPressure = _maxPressure; // start full
         StartCoroutine(RegeneratePressure());
@@ -83,12 +89,15 @@ public class DishwashingMinigame : MonoBehaviour
     private IEnumerator DispenseWater(int amount)
     {
         _isDispensing = true;
+        SoundManager.Instance.PlayOneShot(SoundType.FAUCET, 0.1f);
         for (int i = 0; i < amount; i++)
         {
             Instantiate(_waterPrefab, _waterSpawnPoint.position, Quaternion.identity);
             _waterPressure = Mathf.Clamp01(_waterPressure - _pressureDrainPerWater);
             yield return new WaitForSeconds(0.05f);
         }
+
+        SoundManager.Instance.StopSound(SoundType.FAUCET, 0.2f);
         _isDispensing = false;
     }
 
@@ -112,8 +121,10 @@ public class DishwashingMinigame : MonoBehaviour
     private IEnumerator WinGame()
     {
         _winText.SetActive(true);
+        _winEvent?.Invoke();
+        SoundManager.Instance.PlayOneShot(SoundType.WIN);
 
         yield return new WaitForSeconds(2f);
-        _winEvent?.Invoke();
+        GetComponent<MinigameController>().SetMinigameComplete();
     }
 }

@@ -70,8 +70,9 @@ public class DirtyCup : MonoBehaviour
             // Change cup color to be more clear
             _renderer.color = Color.Lerp(_dirtyColor, _cleanColor, (float)_cleanliness / _targetCleanliness);
 
-            if(_cleanliness >= _targetCleanliness)
+            if((_cleanliness >= _targetCleanliness) && !_isClean)
             {
+                SoundManager.Instance.PlayOneShot(SoundType.WIN);
                 _onClean?.Invoke();
                 _isClean = true;
             }
@@ -93,6 +94,7 @@ public class DirtyCup : MonoBehaviour
             tmpSpawn.x += Random.Range(-2.0f, 2.0f);
             tmpSpawn.y += Random.Range(-2.0f, 2.0f);
 
+            SoundManager.Instance.PlayOneShot(SoundType.BUBBLE);
             GameObject bubble = Object.Instantiate(
                 _bubble,
                 tmpSpawn,

@@ -53,6 +53,7 @@ public class ToppingMinigame : MonoBehaviour
 
     private void FinishMinigame()
     {
+        SoundManager.Instance.PlayOneShot(SoundType.WIN);
         StopCoroutine(_decreaseTapsCoroutine);
         StartCoroutine(MinigameEnd());
     }
@@ -142,9 +143,10 @@ public class ToppingMinigame : MonoBehaviour
         }
 
         DrinkManager.Instance.SetTopping(topping);
+        _onComplete?.Invoke();
         
         _toppingText.SetActive(true);
         yield return new WaitForSeconds(2f);
-        _onComplete?.Invoke();
+        GetComponent<MinigameController>().SetMinigameComplete();
     }
 }
