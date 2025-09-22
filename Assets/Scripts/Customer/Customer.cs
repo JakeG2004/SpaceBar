@@ -36,7 +36,7 @@ public class Customer : MonoBehaviour
 
     void Start()
     {
-        switch(Random.Range(0, 4))
+        switch(Random.Range(0, 3))
         {
             case 0:
                 _blueGuy.SetActive(true);
