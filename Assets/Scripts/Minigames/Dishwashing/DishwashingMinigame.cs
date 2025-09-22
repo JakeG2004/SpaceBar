@@ -23,7 +23,6 @@ public class DishwashingMinigame : MonoBehaviour
     [SerializeField] private int _numCupsToClean = 0;
 
     [Header("End minigame variables")]
-    [SerializeField] private GameObject _winText;
     [SerializeField] private UnityEvent _winEvent;
 
     private float _waterPressure;
@@ -31,7 +30,6 @@ public class DishwashingMinigame : MonoBehaviour
 
     void OnEnable()
     {
-        _winText.SetActive(false);
         numDirtyCups = DrinkManager.Instance.dirtyCups;
         if(numDirtyCups == 0)
         {
@@ -120,7 +118,6 @@ public class DishwashingMinigame : MonoBehaviour
 
     private IEnumerator WinGame()
     {
-        _winText.SetActive(true);
         _winEvent?.Invoke();
         SoundManager.Instance.PlayOneShot(SoundType.WIN);
 

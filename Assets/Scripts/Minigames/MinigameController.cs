@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
+using System.Collections;
 
 public class MinigameController : MonoBehaviour
 {
@@ -12,16 +14,13 @@ public class MinigameController : MonoBehaviour
     [SerializeField] private GameObject _sceneObjects;
 
     private MinigameInputHandler _inputHandler;
-
-    void Start()
-    {
-        BindInputActions();
-    }
     
     void OnEnable()
     {
-        BindInputActions();
-        _sceneObjects.SetActive(false);
+        StartCoroutine(WaitAndBind());
+
+        if(_sceneObjects != null)
+            _sceneObjects.SetActive(false);
     }
 
     void OnDisable()
@@ -33,7 +32,9 @@ public class MinigameController : MonoBehaviour
     {
         InputManager.Instance.SetMovementMode();
         gameObject.SetActive(false);
-        _sceneObjects.SetActive(true);
+
+        if(_sceneObjects != null)
+            _sceneObjects.SetActive(true);
     }
 
     // Binds input events to the input handler
@@ -65,5 +66,15 @@ public class MinigameController : MonoBehaviour
     private void HandleTap()
     {
         _onTap?.Invoke();
+    }
+
+    private IEnumerator WaitAndBind()
+    {
+        while(InputManager.Instance == null)
+        {
+            yield return null;
+        }
+
+        BindInputActions();
     }
 }

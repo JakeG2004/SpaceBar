@@ -18,13 +18,11 @@ public class ToppingMinigame : MonoBehaviour
     [SerializeField] private Transform _finalPos;
     [SerializeField] private Transform _initialPos;
     
-    [SerializeField] private GameObject _toppingText;
     private int _curSelectionIdx;
     private Coroutine _decreaseTapsCoroutine;
 
     void OnEnable()
     {
-        _toppingText.SetActive(false);
         _curSelectionIdx = 0;
         _curSelection = _selectables[0];
 
@@ -152,7 +150,6 @@ public class ToppingMinigame : MonoBehaviour
         DrinkManager.Instance.SetTopping(topping);
         _onComplete?.Invoke();
         
-        _toppingText.SetActive(true);
         yield return new WaitForSeconds(2f);
         GetComponent<MinigameController>().SetMinigameComplete();
     }

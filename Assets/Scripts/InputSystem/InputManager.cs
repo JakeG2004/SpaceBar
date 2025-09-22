@@ -53,12 +53,14 @@ public class InputManager : MonoBehaviour
     {
         _pia.Minigames.Enable();
         _pia.Movement.Disable();
+
     }
 
     public void SetMovementMode()
     {
         _pia.Minigames.Disable();
         _pia.Movement.Enable();
+
     }
 
     private void GetComponentReferences()
