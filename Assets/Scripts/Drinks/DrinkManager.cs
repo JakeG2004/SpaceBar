@@ -50,6 +50,11 @@ public class DrinkManager : MonoBehaviour
         return _drinkColor;
     }
 
+    public DrinkTopping GetDrinkTopping()
+    {
+        return _currentDrink.topping;
+    }
+
     public void CreateOrder()
     {
         if(!_canGetNewOrder)
@@ -66,7 +71,6 @@ public class DrinkManager : MonoBehaviour
 
     public void SetTopping(DrinkTopping topping)
     {
-        Debug.Log("Current topping: " + topping);
         _currentDrink.topping = topping;
     }
 
@@ -81,8 +85,6 @@ public class DrinkManager : MonoBehaviour
             _currentDrink.drink2 = baseColor;
         }
 
-        Debug.Log("Drink1: " + _currentDrink.drink1);
-        Debug.Log("Drink2: " + _currentDrink.drink2);
     }
 
     public void SetTargetDrink(Drink drink)
