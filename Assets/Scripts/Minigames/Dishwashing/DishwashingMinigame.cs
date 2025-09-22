@@ -119,7 +119,7 @@ public class DishwashingMinigame : MonoBehaviour
     private IEnumerator WinGame()
     {
         _winEvent?.Invoke();
-        SoundManager.Instance.PlayOneShot(SoundType.WIN);
+        SoundManager.Instance?.PlayOneShot(SoundType.WIN);
 
         yield return new WaitForSeconds(2f);
         GetComponent<MinigameController>().SetMinigameComplete();
