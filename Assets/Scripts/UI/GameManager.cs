@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        var timer = _gameTimer;
         _gameTimer = Math.Max(_gameTimer - Time.deltaTime, 0f);
-        if (_gameTimer == 0f)
+        if (_gameTimer == 0f && timer != _gameTimer)
         {
             TimerExpiredEvent.RaiseEvent();
         }
