@@ -22,6 +22,7 @@ public class Bottle : MonoBehaviour
     private float floatVelocity;
     
     public Vector3 highlightedPosition;
+    public GameObject highlightObject;
     private Vector3 normalPosition;
     private Vector3 targetPosition;
     private Vector3 vectorVelocity;
@@ -31,14 +32,17 @@ public class Bottle : MonoBehaviour
 
     void Awake()
     {
-        color = GetComponent<SpriteRenderer>().color;
-        
         normalScale = transform.localScale.x;
         normalPosition = transform.localPosition;
         normalRotation = transform.rotation;
-        
+
         targetScale = normalScale;
         targetPosition = normalPosition;
+
+        if (highlightObject)
+        {
+            highlightedPosition = highlightObject.transform.position;
+        }
     }
     
     void OnEnable()
